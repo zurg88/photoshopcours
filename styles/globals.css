@@ -1,0 +1,31 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+	color: var(--black);
+	background-color: #E5E5E5;
+
+	font-family: var(--font-family);
+}
+
+a {
+	text-decoration: none;
+
+	color: inherit;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+:root {
+	--black: #3B434E;
+	--gray-light: #EBEBEB;
+	--white: white;
+	--accent: #7653FC;
+	--accent-hover: #5b39e0;
+	--red: #FC836D;
+	--green: #1DC37E;
+	--green-light: #C8F8E4;
+	--font-family: 'Noto Sans Display', sans-serif;
+}
