@@ -1,0 +1,39 @@
+.footer {
+	grid-area: footer;
+	display: grid;
+	grid-template-columns: 1fr auto auto;
+	grid-template-rows: 1fr;
+	align-items: center;
+	justify-content: space-between;
+
+	padding: 25px 32px;
+	background-color: var(--accent);
+	font-size: 16px;
+}
+
+.footerLink,
+.footer {
+	color: var(--white);
+}
+
+.footerLink {
+	margin-left: 40px;
+	transition: all .2s;
+}
+
+.footerLink:hover {
+	text-decoration: underline;
+	color: var(--gray-light);
+}
+
+@media (max-width: 765px) {
+	.footer {
+		grid-template-columns: 1fr;
+		gap: 10px;
+		justify-items: center;
+	}
+
+	.footerLink {
+		margin: 0;
+	}
+}

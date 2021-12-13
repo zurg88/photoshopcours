@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Htag } from '../components/Htag/Htag';
-import { Button } from '../components/Button/Button';
-import { Paragraph } from '../components/Paragraph/Paragraph';
-import { AdditionalSmallElement } from '../components/additionalSmallElement/AdditionalSmallElement';
-import { Rating } from '../components/Raiting/Rating';
+import { Htag, Button, Paragraph, Rating, AdditionalSmallElement, Input, Textarea } from '../components';
+import { withLayout } from '../Layout/Layout';
+import axios, { AxiosResponse } from 'axios';
+import { MenuItem } from '../interfaces/menu.interface';
+import { GetStaticProps } from 'next';
+import { API } from '../helpers/api';
 
-export default function Home(): JSX.Element {
+function Home({ menu }: HomeProps): JSX.Element {
   const [rating, setRating] = useState<number>(4);
 
   const [counter, setCounter] = useState<number>(0);
 
   useEffect(() => {
-    console.log('counter ' + counter);
 
     return function cleanUp() {
       console.log('Mount')
@@ -53,6 +53,32 @@ export default function Home(): JSX.Element {
       <AdditionalSmallElement size="s" color="ghost">text</AdditionalSmallElement>
 
       <Rating rating={rating} isEditable setRating={setRating} />
+
+      <Input placeholder='Имя' />
+
+      <Textarea placeholder='Текст отзыва' />
+
     </>
   )
 };
+
+export default withLayout(Home);
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+
+  const firstCategory = 0;
+  const { data: menu }: AxiosResponse<MenuItem[]> = await axios.post<MenuItem[]>(API.topPage.find, {
+    firstCategory
+  });
+  return {
+    props: {
+      menu,
+      firstCategory
+    }
+  }
+};
+
+interface HomeProps extends Record<string, unknown> {
+  menu: MenuItem[];
+  firstCategory: number;
+}

@@ -18,14 +18,31 @@ a {
 	box-sizing: border-box;
 }
 
+.visualyHidden {
+	width: 0;
+	height: 0;
+	font-size: 0;
+	overflow: hidden;
+	position: absolute;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+}
+
 :root {
 	--black: #3B434E;
 	--gray-light: #EBEBEB;
+	--gray: #A4A4A4;
+	--gray-bgc: #E5E5E5;
+	--gray-dark: #6c7077;
 	--white: white;
-	--accent: #7653FC;
-	--accent-hover: #5b39e0;
+	--accent: #7351F5;
+	--accent-hover: #4b2dc2;
 	--red: #FC836D;
-	--green: #1DC37E;
+	--red-light: #f0b7ad;
+	--green: #007b48;
 	--green-light: #C8F8E4;
 	--font-family: 'Noto Sans Display', sans-serif;
 }
