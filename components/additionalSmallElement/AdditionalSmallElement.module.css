@@ -3,17 +3,20 @@
 
 	box-sizing: border-box;
 	margin-right: 5px;
+
 	border-radius: 20px;
 }
 
 .s {
 	padding: 5px 10px;
+
 	font-size: 12px;
 	line-height: 12px;
 }
 
 .m {
 	padding: 5px 10px;
+
 	font-size: 14px;
 	line-height: 14px;
 }
@@ -31,7 +34,7 @@
 
 .grey {
 	color: var(--white);
-	background-color: #8a99b7;
+	background-color: #8A99B7;
 
 	font-weight: bold;
 }
@@ -45,7 +48,7 @@
 
 .accent {
 	color: var(--accent);
-	background-color: none;
 
 	border: 1px solid var(--accent);
+	background-color: none;
 }

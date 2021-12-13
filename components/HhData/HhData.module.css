@@ -10,25 +10,27 @@
 	gap: 20px 0;
 }
 
-.salary>div {
+.salary > div {
 	border-right: 1px solid var(--gray-light);
 }
 
-.salary>div:last-child {
+.salary > div:last-child {
 	border-right: none;
 }
 
 .salary,
 .count {
-	text-align: center;
 	padding: 20px;
+
+	text-align: center;
 }
 
 .countValue {
+	color: var(--accent);
+
 	font-size: 36px;
 	font-weight: bold;
 	line-height: 49px;
-	color: var(--accent);
 }
 
 .title {
@@ -38,8 +40,8 @@
 }
 
 .salaryValue {
-	font-weight: bold;
 	font-size: 26px;
+	font-weight: bold;
 	line-height: 35px;
 }
 
@@ -52,6 +54,7 @@
 	display: grid;
 	grid-template-columns: repeat(3, 20px);
 	gap: 10px;
+
 	justify-content: center;
 }
 
@@ -63,22 +66,23 @@
 	.hh {
 		grid-template-columns: 1fr;
 	}
-
 }
 
 @media screen and (max-width: 640px) {
-	.salary>div {
+	.salary > div {
+		padding-bottom: 20px;
+
 		border-right: none;
 		border-bottom: 1px solid var(--gray-light);
-		padding-bottom: 20px;
 	}
 
 	.salary {
 		grid-template-columns: 1fr;
 	}
 
-	.salary>div:last-child {
-		border-bottom: none;
+	.salary > div:last-child {
 		padding-bottom: 0;
+
+		border-bottom: none;
 	}
 }

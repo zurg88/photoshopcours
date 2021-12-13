@@ -1,22 +1,26 @@
 .firstLevel {
 	display: grid;
-	grid-template-columns: 24px 1fr;
-	gap: 20px;
 	align-items: center;
-	line-height: 1.5;
+
+	margin-top: 20px;
+
 	font-size: 18px;
 	font-weight: 500;
-	margin-top: 20px;
+	line-height: 1.5;
+	grid-template-columns: 24px 1fr;
+	gap: 20px;
 }
-
 
 .firstLevel:hover,
 .firstLevelActive {
 	color: var(--accent);
 }
 
-.firstLevel:hover svg,
 .firstLevelActive svg {
+	fill: var(--accent);
+}
+
+.firstLevel:hover svg {
 	fill: var(--accent);
 }
 
@@ -25,11 +29,13 @@
 
 	cursor: pointer;
 	text-transform: uppercase;
+
 	color: var(--gray-dark);
-	font-weight: 600;
-	font-size: 14px;
 	border: none;
 	background-color: transparent;
+
+	font-size: 14px;
+	font-weight: 600;
 }
 
 .secondBlock {
@@ -42,15 +48,17 @@
 
 .thirdLevel {
 	display: block;
+
 	margin-bottom: 10px;
 	margin-left: 10px;
 
 	cursor: pointer;
 
 	color: var(--gray-dark);
-	font-weight: 500;
-	font-size: 14px;
 	outline-offset: -1;
+
+	font-size: 14px;
+	font-weight: 500;
 }
 
 .secondLevelBlock {

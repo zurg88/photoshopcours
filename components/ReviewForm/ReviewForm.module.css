@@ -3,6 +3,7 @@
 	grid-template-columns: [start] auto 1fr auto [end];
 	gap: 20px 30px;
 	justify-items: start;
+
 	align-items: center;
 
 	font-size: 14px;
@@ -29,10 +30,12 @@
 
 .error,
 .success {
-	padding: 20px;
 	position: relative;
-	border-radius: 5px;
+
 	margin-top: 20px;
+	padding: 20px;
+
+	border-radius: 5px;
 }
 
 .error {
@@ -44,15 +47,17 @@
 }
 
 .successTitle {
-	font-weight: bold;
 	font-size: 16px;
+	font-weight: bold;
 }
 
 .closeBtn {
 	position: absolute;
-	right: 10px;
 	top: 10px;
+	right: 10px;
+
 	cursor: pointer;
+
 	border: none;
 	background-color: transparent;
 }

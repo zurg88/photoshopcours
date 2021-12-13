@@ -1,23 +1,26 @@
 .textareaWrapper {
 	position: relative;
+
 	width: 100%;
 }
 
 .textarea {
 	display: block;
-	padding: 7px 15px;
+
 	width: 100%;
+	padding: 7px 15px;
 
 	color: var(--black);
-	background-color: var(--white);
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
 	border: none;
 	border-radius: 5px;
 	outline: var(--accent);
+	background-color: var(--white);
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+
+	font-family: var(--font-family);
 
 	font-size: 16px;
 	line-height: 1.5;
-	font-family: var(--font-family);
 }
 
 .textarea::placeholder {
@@ -30,7 +33,8 @@
 
 .errorMessage {
 	position: absolute;
-	left: 0;
 	bottom: -20px;
+	left: 0;
+
 	color: var(--red);
 }

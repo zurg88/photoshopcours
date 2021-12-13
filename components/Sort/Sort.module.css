@@ -4,12 +4,14 @@
 
 .active .sortIcon {
 	display: block;
+
 	margin-right: 8px;
 }
 
 .active {
-	font-weight: bold;
 	color: var(--accent);
+
+	font-weight: bold;
 }
 
 .sort {
@@ -21,13 +23,16 @@
 
 .sort button {
 	display: flex;
+	align-items: center;
 	flex-direction: row;
 	justify-content: space-between;
-	align-items: center;
+
 	cursor: pointer;
-	transition: background .2s;
+	transition: background 0.2s;
+
 	border: none;
 	background-color: transparent;
+
 	font-size: 16px;
 }
 
