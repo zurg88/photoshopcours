@@ -4,7 +4,7 @@ import { TopLevelCategory } from '../interfaces/page.interface';
 
 export interface IAppContext {
 	menu: MenuItem[];
-	firstCategory: TopLevelCategory;
+	firstCategory: TopLevelCategory.Courses;
 	setMenu?: (newMenu: MenuItem[]) => void;
 };
 

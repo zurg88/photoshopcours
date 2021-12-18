@@ -57,7 +57,6 @@ function Home({ menu }: HomeProps): JSX.Element {
       <Input placeholder='Имя' />
 
       <Textarea placeholder='Текст отзыва' />
-
     </>
   )
 };

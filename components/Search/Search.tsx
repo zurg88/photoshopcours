@@ -3,7 +3,7 @@ import { SearchProps } from './Search.props';
 import cn from 'classnames';
 import SearchIcon from './Search.svg';
 import { Button, Input } from '..';
-import React, { useState } from 'react';
+import React, { useState, KeyboardEvent } from 'react';
 import { useRouter } from 'next/dist/client/router';
 
 export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
@@ -19,8 +19,8 @@ export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
 		});
 	};
 
-	const handleKeyDown = (e: KeyboardEvent) => {
-		if (e.key == 'Enter') {
+	const handleKeyDown = (event: KeyboardEvent) => {
+		if (event.key == 'Enter') {
 			goToSearchPage();
 		}
 	};
@@ -30,7 +30,7 @@ export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
 			<Input placeholder='Поиск...'
 				className={styles.input}
 				value={search}
-				onChange={(e) => setSearch(e.target.value)}
+				onChange={(event) => setSearch(event.target.value)}
 				onKeyDown={handleKeyDown}
 			/>
 

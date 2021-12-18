@@ -7,9 +7,9 @@ import { TopLevelCategory } from '../interfaces/page.interface';
 
 export const firstLevelMenu: FirstLevelMenuItem[] = [
 	{ route: 'courses', name: 'Курсы', icon: <CoursesIcon />, id: TopLevelCategory.Courses },
-	{ route: 'books', name: 'Книги', icon: <BooksIcon />, id: TopLevelCategory.Books },
-	{ route: 'product', name: 'Продукты', icon: <ProductIcon />, id: TopLevelCategory.Products },
-	{ route: 'services', name: 'Товары', icon: <ServicesIcon />, id: TopLevelCategory.Services },
+	// { route: 'books', name: 'Книги', icon: <BooksIcon />, id: TopLevelCategory.Books },
+	// { route: 'product', name: 'Продукты', icon: <ProductIcon />, id: TopLevelCategory.Products },
+	// { route: 'services', name: 'Товары', icon: <ServicesIcon />, id: TopLevelCategory.Services },
 ];
 
 export const priceRu = (price: number): string => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ').concat(' ₽');

@@ -1,7 +1,7 @@
 import styles from './Product.module.css';
 import { ProductProps } from './Product.props';
 import cn from 'classnames';
-import React, { ForwardedRef, forwardRef, useRef, useState } from 'react';
+import React, { ForwardedRef, forwardRef, useRef, useState, MouseEvent } from 'react';
 import { AdditionalSmallElement, Button, Card, Divider, Htag, Rating, Review, ReviewForm } from '..';
 import { declOfNumber, priceRu } from '../../helpers/helpers';
 import Image from 'next/image';
@@ -16,7 +16,7 @@ export const Product = motion(forwardRef(({ product, className, ...props }: Prod
 		hidden: { height: 0, opacity: 0 }
 	};
 
-	const scrollToReview = (e) => {
+	const scrollToReview = (e: MouseEvent) => {
 		e.preventDefault();
 
 		setIsRevieweOpened(true);
@@ -31,7 +31,7 @@ export const Product = motion(forwardRef(({ product, className, ...props }: Prod
 		<div className={className} {...props} ref={ref}>
 			<Card className={styles.product}>
 				<div className={styles.logo}>
-					<Image src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
+					<img src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
 						alt={product.title}
 						width={70}
 						height={70}
@@ -116,4 +116,5 @@ export const Product = motion(forwardRef(({ product, className, ...props }: Prod
 		</div>
 	);
 }));
+
 

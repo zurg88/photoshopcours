@@ -16,7 +16,6 @@ export const ReviewForm = ({ productId, className, isOpened, ...props }: ReviewF
 	const [error, setIsError] = useState<string>();
 
 	const onSubmit = async (formData: IreviewForm) => {
-
 		try {
 			const { data } = await axios.post<IReviewSentResponse>(API.review.createDemo, { ...formData, productId });
 			if (data.message) {
@@ -25,8 +24,8 @@ export const ReviewForm = ({ productId, className, isOpened, ...props }: ReviewF
 			} else {
 				setIsError('Что-то пошло не так');
 			}
-		} catch (error) {
-			setIsError(error.message);
+		} catch (e: any) {
+			setIsError(e.message);
 		}
 
 	};

@@ -31,7 +31,7 @@ export interface TopPageModel {
 	tagsTitle: string;
 	metaTitle: string;
 	metaDescription: string;
-	firstCategory: TopLevelCategory;
+	firstCategory: TopLevelCategory.Courses;
 	advantages?: TopPageAdvantage[];
 	createdAt: Date;
 	updatedAt: Date;
