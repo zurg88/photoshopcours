@@ -1,63 +1,167 @@
-import React, { useEffect, useState } from 'react';
-import { Htag, Button, Paragraph, Rating, AdditionalSmallElement, Input, Textarea } from '../components';
+import React, { useContext, useEffect, useState } from 'react';
+import styles from './Page.module.css';
+import { Card, Htag, Paragraph } from '../components';
 import { withLayout } from '../Layout/Layout';
 import axios, { AxiosResponse } from 'axios';
-import { MenuItem } from '../interfaces/menu.interface';
+import cn from 'classnames';
+import { FirstLevelMenuItem, MenuItem, PageItem } from '../interfaces/menu.interface';
 import { GetStaticProps } from 'next';
 import { API } from '../helpers/api';
+import { firstLevelMenu } from '../helpers/helpers';
+import Image from 'next/image';
+import { useRouter } from 'next/dist/client/router';
+import CategoryBg from '../helpers/img/categoryBg.jpg';
+import { AppContext } from '../context/app.context';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
-function Home({ menu }: HomeProps): JSX.Element {
-  const [rating, setRating] = useState<number>(4);
+function Home(): JSX.Element {
+  const { menu, setMenu, firstCategory } = useContext(AppContext);
+  const router = useRouter();
 
-  const [counter, setCounter] = useState<number>(0);
+  const buildSecondLevel = (menuItem: FirstLevelMenuItem) => {
+    return (
+      <ul className={styles.categoryList}>
+        {menu.map(m => {
+          if (m.pages.map(p => p.alias).includes(router.asPath.split('/')[2])) {
+            m.isOpened = true;
+          }
+          return (
+            <motion.li className={styles.categoryListItem} layout key={m._id.secondCategory}>
+              <Card
+                className={styles.categoryCard}
+                aria-expanded={m.isOpened}
+              >
+                <Htag tag='h3'>{m._id.secondCategory}</Htag>
+                <ul className={styles.secondLevelBlock} >
+                  {buildThirdLevel(m.pages, menuItem.route, m.isOpened ?? false)}
+                </ul>
+              </Card>
 
-  useEffect(() => {
+            </motion.li>
+          );
+        })}
+      </ul>
+    );
+  };
 
-    return function cleanUp() {
-      console.log('Mount')
-    }
-  })
+  const buildThirdLevel = (pages: PageItem[], route: string, isOpened: boolean) => {
+    return (
+      pages.map(p => (
+        <li className={styles.thirdLevelItems} key={p._id}>
+          <Link href={`/${route}/${p.alias}`}>
+            <a
+              aria-current={`/${route}/${p.alias}` == router.asPath ? 'page' : false}
+              tabIndex={0}
+              className={styles.thirdLevelItemsLink}>
+              {p.category}
+            </a>
+          </Link>
+        </li>
+      ))
+    );
+  };
 
   return (
-    <>
-      <Htag tag='h1'> {counter} </Htag>
-      <Button appearance="primary" arrow="right" onClick={() => setCounter(x => x + 1)} >counter++</Button>
-      <Button appearance="ghost" arrow="right">Кнопка</Button>
-      <Paragraph size='s'>
-        Напишу сразу в двух курсах, так как проходил оба. Java будет многим непросвещённым
-        сложновата в изучении, но здесь перевес из-за лидирующего положения языка как
-        самого популярного в программировании. Выбор мой пал на эту профессию еще и потому, что
-        Java-разработчики получают самую большую зарплату. Хотя Python начинает догонять Java
-        по многим моментам, но вот в крупном екоме разработке Джава все-таки остается
-        главенствующей сейчас. Скажу так – полнота программы и интенсивность присуща
-        обоим курсам GeekBrains. Хочу отметить, что с первого дня занятий вы приступаете
-        к практике и получаете опыт коммерческой разработки уже в свое резюме. Скажу вам
-        как прошедший это – реально помогло в трудоустройстве!
-      </Paragraph>
-      <Paragraph>
-        Напишу сразу в двух курсах, так как проходил оба. Java будет многим непросвещённым
-        сложновата в изучении, но здесь перевес из-за лидирующего положения языка как
-        самого популярного в программировании. Выбор мой пал на эту профессию еще и потому, что
-        Java-разработчики получают самую большую зарплату. Хотя Python начинает догонять Java
-        по многим моментам, но вот в крупном екоме разработке Джава все-таки остается
-        главенствующей сейчас. Скажу так – полнота программы и интенсивность присуща
-        обоим курсам GeekBrains. Хочу отметить, что с первого дня занятий вы приступаете
-        к практике и получаете опыт коммерческой разработки уже в свое резюме. Скажу вам
-        как прошедший это – реально помогло в трудоустройстве!
-      </Paragraph>
+    <div className={styles.contentWrapper}>
+      <Htag tag='h1'> Освой новую профессию! </Htag>
 
-      <AdditionalSmallElement size="s">text</AdditionalSmallElement>
-      <AdditionalSmallElement size="m" color="red">text</AdditionalSmallElement>
-      <AdditionalSmallElement size="m" color="accent">textColor</AdditionalSmallElement>
-      <AdditionalSmallElement size="m" color="green">text</AdditionalSmallElement>
-      <AdditionalSmallElement size="s" color="ghost">text</AdditionalSmallElement>
+      <div className={styles.imagelock}>
+        <Image alt='Courses' src={CategoryBg} layout="responsive" />
+      </div>
 
-      <Rating rating={rating} isEditable setRating={setRating} />
+      {firstLevelMenu.map(m => (
+        <div className={styles.categoryWrapp} key={m.id}>
+          {m.id == firstCategory && buildSecondLevel(m)}
+        </div>
+      ))}
 
-      <Input placeholder='Имя' />
+      <div className={styles.textContent}>
+        <ul className={styles.benefitList}>
+          <Htag tag='h2'>Когда полезны онлайн-курсы</Htag>
+          <li className={styles.benefitListItem}>
+            <Paragraph>
+              <strong>Вы хотите быстрее начать работать.</strong>
+              Курсы помогут быстро вникнуть в теорию, попробовать свои силы на
+              практике и найти первых клиентов или работодателей.
+            </Paragraph>
+          </li>
 
-      <Textarea placeholder='Текст отзыва' />
-    </>
+          <li className={styles.benefitListItem}>
+            <Paragraph>
+              <strong>Вы чувствуете, что знаний для продвижения в профессии не хватает.</strong>
+              Курсы помогут прокачать необходимые навыки и перейти на новый профессиональный уровень.
+              Если вы пишете тексты для сайтов, на курсах научитесь создавать посты и для социальных сетей.
+            </Paragraph>
+          </li>
+
+          <li className={styles.benefitListItem}>
+            <Paragraph>
+              <strong>Вам нужна обратная связь от опытных коллег.</strong>
+              Курсы ведут эксперты, они помогут
+              вам выполнять практические задания, покажут ошибки и помогут их исправить.
+            </Paragraph>
+          </li>
+
+          <li className={styles.benefitListItem}>
+            <Paragraph>
+              <strong>Вы хотите учиться в удобное для себя время.</strong>
+              На курсах вы сможете учиться дома и по вечерам.
+              Вам не придётся ехать на другой конец города, чтобы послушать преподавателя.
+            </Paragraph>
+          </li>
+
+          <li className={styles.benefitListItem}>
+            <Paragraph>
+              <strong>Вы хотите освоить профессию с нуля.</strong>
+              Все знания на курсе даются
+              последовательно — вы будете переходить от простого понятия к сложному.
+              Большинство курсов ориентированы именно на обучение новичков.
+            </Paragraph>
+          </li>
+
+          <li className={styles.benefitListItem}>
+            <Paragraph>
+              <strong>Вы хотите получить практический опыт.</strong>
+              На курсах много практики. Вы будете выполнять домашнюю работу и
+              тренироваться на реальных проектах.
+              Все работы ученика проверяет опытный преподаватель, и на выходе каждый ученик получает качественное портфолио.
+            </Paragraph>
+          </li>
+        </ul>
+
+        <div className={styles.info}>
+          <Htag tag='h2'>Ещё немного полезной информации</Htag>
+          <ul className={styles.infoList}>
+            <li className={styles.infoListItem}>
+              <Paragraph>
+                Курсы покупать стоит, если вы хотите сменить сферу деятельности и получить новую профессию.
+              </Paragraph>
+            </li>
+
+            <li className={styles.infoListItem}>
+              <Paragraph>
+                Обучение на онлайн-курсах проходит в комфортном режиме:
+                учиться можно по вечерам или выходным, а лекции пересматривать в любое время.
+              </Paragraph>
+            </li>
+
+            <li className={styles.infoListItem}>
+              <Paragraph>
+                Самообразование не заменит, но дополнить курсы.
+                Книги и бесплатные мастер-классы помогут разобраться с терминологией и изучить чужой опыт, но не дадут практику.
+              </Paragraph>
+            </li>
+
+            <li className={styles.infoListItem}>
+              <Paragraph>
+                Оптимальный вариант — когда удаётся совмещать обучение на курсе и самообразование.
+              </Paragraph>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div >
   )
 };
 
@@ -81,3 +185,6 @@ interface HomeProps extends Record<string, unknown> {
   menu: MenuItem[];
   firstCategory: number;
 }
+
+
+

@@ -47,7 +47,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		paths = paths.concat(menu.flatMap(s => s.pages.map(p => `/${m.route}/${p.alias}`)));
 
 	}
-
 	return {
 		paths,
 		fallback: false
@@ -99,8 +98,6 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async ({ params }: G
 			notFound: true
 		};
 	}
-
-
 };
 
 interface TopPageProps extends Record<string, unknown> {

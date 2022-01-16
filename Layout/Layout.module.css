@@ -1,6 +1,6 @@
 .wrapper {
 	display: grid;
-	grid-template-columns: auto 230px minmax(320px, 1200px) auto;
+	grid-template-columns: auto 280px minmax(320px, 1200px) auto;
 	grid-template-areas:
 		". header header ."
 		". sidebar main ."

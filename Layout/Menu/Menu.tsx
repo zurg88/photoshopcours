@@ -7,9 +7,10 @@ import Link from 'next/link'
 import { useRouter } from 'next/dist/client/router';
 import { firstLevelMenu } from '../../helpers/helpers';
 import { motion, useReducedMotion } from 'framer-motion';
+import { Htag } from '../../components';
 
 export const Menu = (): JSX.Element => {
-	const { menu, setMenu, firstCategory } = useContext(AppContext)
+	const { menu, setMenu, firstCategory } = useContext(AppContext);
 	const router = useRouter();
 	const [announce, setAnnounce] = useState<'closed' | 'opened' | undefined>();
 	const shouldReduceMotion = useReducedMotion();
@@ -19,14 +20,14 @@ export const Menu = (): JSX.Element => {
 			marginBottom: 20,
 			transition: shouldReduceMotion ? {} : {
 				when: 'beforeChildren',
-				sraggerChildren: 0.1
+				sraggerChildren: 0.1,
 			}
 		},
 		hidden: { marginBottom: 0 }
 	};
 
 	const variantsChildren = {
-		visible: { opacity: 1, height: 'auto' },
+		visible: { opacity: 1, height: 27, transition: { type: "tween", stiffness: 50 } },
 		hidden: { opacity: 0, height: 0 }
 	};
 
@@ -52,17 +53,14 @@ export const Menu = (): JSX.Element => {
 			<ul>
 				{firstLevelMenu.map(m => (
 					<li key={m.route} aria-expanded={m.id == firstCategory}>
-						<Link href={`/${m.route}`}>
-							<a>
-								<div className={cn(styles.firstLevel, {
-									[styles.firstLevelActive]: m.id == firstCategory
-								})}>
-									{m.icon}
-									<span>{m.name}</span>
-								</div>
-							</a>
-						</Link>
-
+						<Htag tag='h2'>
+							<div className={cn(styles.firstLevel, {
+								[styles.firstLevelActive]: m.id == firstCategory
+							})}>
+								{m.icon}
+								<span>{m.name}</span>
+							</div>
+						</Htag>
 						{m.id == firstCategory && buildSecondLevel(m)}
 					</li>
 				))}
@@ -88,7 +86,7 @@ export const Menu = (): JSX.Element => {
 								{m._id.secondCategory}
 							</button>
 							<motion.ul
-								layout
+								layout='size'
 								variants={variants}
 								initial={m.isOpened ? 'visible' : 'hidden'}
 								animate={m.isOpened ? 'visible' : 'hidden'}
@@ -106,7 +104,7 @@ export const Menu = (): JSX.Element => {
 	const buildThirdLevel = (pages: PageItem[], route: string, isOpened: boolean) => {
 		return (
 			pages.map(p => (
-				<motion.li key={p._id} variants={variantsChildren}>
+				<motion.li key={p._id} layout variants={variantsChildren}>
 					<Link href={`/${route}/${p.alias}`}>
 						<a
 							aria-current={`/${route}/${p.alias}` == router.asPath ? 'page' : false}
