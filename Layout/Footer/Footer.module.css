@@ -1,19 +1,19 @@
 .footer {
-	grid-area: footer;
-
 	display: grid;
-	grid-template-columns: 1fr auto auto;
-	grid-template-rows: 1fr;
 
 	align-items: center;
 	justify-content: space-between;
 
-	padding: 25px 32px;
 	margin-top: 30px;
+
+	padding: 25px 32px;
 
 	background-color: var(--accent);
 
 	font-size: 16px;
+	grid-area: footer;
+	grid-template-columns: 1fr auto auto;
+	grid-template-rows: 1fr;
 }
 
 .footerLink,

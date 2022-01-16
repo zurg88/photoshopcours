@@ -7,32 +7,41 @@
 }
 
 .categoryWrapp {
-	padding: 15px;
 	position: relative;
+
+	padding: 15px;
+
 	background-color: #AAB2BB;
 }
 
 .contentWrapper h1 {
-	text-align: center;
-	font-size: 3em;
 	margin: 15px 0 30px 0;
+
+	text-align: center;
+
+	font-size: 3em;
 }
 
 .categoryList {
 	display: grid;
+
+	text-transform: uppercase;
+
+	color: var(--white);
 	grid-template-columns: repeat(4, 1fr);
 	gap: 20px;
-	color: var(--white);
-	text-transform: uppercase;
 }
 
 .categoryCard {
-	text-align: center;
-	padding: 10px;
-	cursor: pointer;
-	width: 100%;
-	background-color: transparent;
 	position: relative;
+
+	width: 100%;
+	padding: 10px;
+
+	cursor: pointer;
+	text-align: center;
+
+	background-color: transparent;
 }
 
 .categoryListItem .categoryCard {
@@ -40,8 +49,10 @@
 }
 
 .categoryListItem h3 {
-	text-transform: uppercase;
 	margin-top: 5px;
+
+	text-transform: uppercase;
+
 	color: var(--red);
 }
 
@@ -50,7 +61,7 @@
 }
 
 .thirdLevelItemsLink {
-	transition: all .2s;
+	transition: all 0.2s;
 }
 
 .thirdLevelItemsLink:hover {
@@ -58,45 +69,53 @@
 }
 
 .secondLevelBlock {
-	height: 0;
-	font-size: 0;
 	position: relative;
 	right: 0;
-	transition: all .2s;
+
+	height: 0;
+
+	transition: all 0.2s;
+
+	font-size: 0;
 }
 
 .categoryCard:hover .secondLevelBlock {
 	height: auto;
+
 	font-size: inherit;
 }
 
 .textContent h2 {
+	margin-left: 15px;
+
 	text-transform: uppercase;
+
 	font-size: 22px;
 	font-weight: bold;
-	margin-left: 15px;
 }
 
 .benefitListItem {
 	margin: 0 0 15px 25px;
+
 	font-size: 14px;
 }
 
 .infoListItem {
 	margin: 0 0 10px 25px;
+
 	list-style-type: square;
 }
 
 .infoListItem p {
 	font-size: 18px;
 	font-weight: bold;
-
 }
 
 .infoList {
-	background-color: var(--green-light);
-	border-radius: 10px;
 	padding: 20px;
+
+	border-radius: 10px;
+	background-color: var(--green-light);
 }
 
 @media screen and (max-width: 1024px) {
