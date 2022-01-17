@@ -49,7 +49,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	}
 	return {
 		paths,
-		fallback: false
+		fallback: 'blocking'
 	};
 };
 
@@ -61,15 +61,15 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async ({ params }: G
 			notFound: true
 		};
 	}
-
-	const firstCategoryItem = firstLevelMenu.find(m => m.route == params.type);
-	if (!firstCategoryItem) {
-		return {
-			notFound: true
-		};
-	}
-
 	try {
+		const firstCategoryItem = firstLevelMenu.find(m => m.route == params.type);
+		if (!firstCategoryItem) {
+			return {
+				notFound: true
+			};
+		}
+
+
 		const { data: menu }: AxiosResponse<MenuItem[]> = await axios.post<MenuItem[]>(API.topPage.find, {
 			firstCategory: TopLevelCategory.Courses
 		});

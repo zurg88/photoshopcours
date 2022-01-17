@@ -177,7 +177,8 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
     props: {
       menu,
       firstCategory
-    }
+    },
+    revalidate: 60,
   }
 };
 
