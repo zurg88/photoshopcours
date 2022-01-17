@@ -61,42 +61,37 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async ({ params }: G
 			notFound: true
 		};
 	}
-	try {
-		const firstCategoryItem = firstLevelMenu.find(m => m.route == params.type);
-		if (!firstCategoryItem) {
-			return {
-				notFound: true
-			};
-		}
-
-
-		const { data: menu }: AxiosResponse<MenuItem[]> = await axios.post<MenuItem[]>(API.topPage.find, {
-			firstCategory: TopLevelCategory.Courses
-		});
-
-		if (menu.length == 0) {
-			return {
-				notFound: true
-			};
-		}
-
-		const { data: page }: AxiosResponse<TopPageModel> = await axios.get<TopPageModel>(API.topPage.byAlias + params.alias);
-		const { data: products }: AxiosResponse<ProductModel[]> = await axios.post<ProductModel[]>(API.product.find, {
-			category: page.category,
-			limit: 10
-		});
-		return {
-			props: {
-				menu,
-				firstCategory: TopLevelCategory.Courses,
-				page,
-				products
-			}
-		}
-	} catch {
+	const firstCategoryItem = firstLevelMenu.find(m => m.route == params.type);
+	if (!firstCategoryItem) {
 		return {
 			notFound: true
 		};
+	}
+
+
+	const { data: menu }: AxiosResponse<MenuItem[]> = await axios.post<MenuItem[]>(API.topPage.find, {
+		firstCategory: TopLevelCategory.Courses
+	});
+
+	if (menu.length == 0) {
+		return {
+			notFound: true
+		};
+	}
+
+	const { data: page }: AxiosResponse<TopPageModel> = await axios.get<TopPageModel>(API.topPage.byAlias + params.alias);
+	const { data: products }: AxiosResponse<ProductModel[]> = await axios.post<ProductModel[]>(API.product.find, {
+		category: page.category,
+		limit: 10
+	});
+	return {
+		props: {
+			menu,
+			firstCategory: TopLevelCategory.Courses,
+			page,
+			products
+		},
+		revalidate: 60
 	}
 };
 
