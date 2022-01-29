@@ -183,6 +183,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
     const firstCategory = 0;
     return {
       props: {
+        menu: [],
         firstCategory
       }
     }
@@ -192,6 +193,6 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 };
 
 interface HomeProps extends Record<string, unknown> {
-  menu?: MenuItem[];
+  menu: MenuItem[];
   firstCategory: number;
 }
