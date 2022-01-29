@@ -3,7 +3,6 @@ import styles from './Page.module.css';
 import { Card, Htag, Paragraph } from '../components';
 import { withLayout } from '../Layout/Layout';
 import axios, { AxiosResponse } from 'axios';
-import cn from 'classnames';
 import { FirstLevelMenuItem, MenuItem, PageItem } from '../interfaces/menu.interface';
 import { GetStaticProps } from 'next';
 import { API } from '../helpers/api';
@@ -186,6 +185,3 @@ interface HomeProps extends Record<string, unknown> {
   menu: MenuItem[];
   firstCategory: number;
 }
-
-
-
