@@ -167,10 +167,9 @@ function Home(): JSX.Element {
 export default withLayout(Home);
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-
+  const firstCategory = 0;
   try {
-    const firstCategory = 0;
-    const { data: menu }: AxiosResponse<MenuItem[]> = await axios.post<MenuItem[]>(API.topPage.find, {
+    const { data: menu }: AxiosResponse<MenuItem[]> = await axios.post<MenuItem[]>('https://courses-top.ru/api/top-page/find', {
       firstCategory
     });
     return {
@@ -180,7 +179,6 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
       }
     }
   } catch {
-    const firstCategory = 0;
     return {
       props: {
         menu: [],
