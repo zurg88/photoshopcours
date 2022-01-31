@@ -5,8 +5,7 @@ import { MenuItem } from '../../interfaces/menu.interface';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import { firstLevelMenu } from '../../helpers/helpers';
 import { ParsedUrlQuery } from 'querystring';
-import { API } from '../../helpers/api';
-
+import { API } from '../api/api';
 
 function Type({ firstCategory }: TypeProps): JSX.Element {
 	return (

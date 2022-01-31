@@ -3,7 +3,7 @@ import { withLayout } from '../Layout/Layout';
 import axios, { AxiosResponse } from 'axios';
 import { MenuItem } from '../interfaces/menu.interface';
 import { GetStaticProps } from 'next';
-import { API } from '../helpers/api';
+import { API } from './api/api';
 
 function Search(): JSX.Element {
 	return (

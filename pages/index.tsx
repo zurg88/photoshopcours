@@ -5,7 +5,6 @@ import { withLayout } from '../Layout/Layout';
 import axios, { AxiosResponse } from 'axios';
 import { FirstLevelMenuItem, MenuItem, PageItem } from '../interfaces/menu.interface';
 import { GetStaticProps } from 'next';
-import { API } from '../helpers/api';
 import { firstLevelMenu } from '../helpers/helpers';
 import Image from 'next/image';
 import { useRouter } from 'next/dist/client/router';
@@ -13,6 +12,7 @@ import CategoryBg from '../helpers/img/categoryBg.jpg';
 import { AppContext } from '../context/app.context';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { API } from './api/api';
 
 function Home(): JSX.Element {
   const { menu, setMenu, firstCategory } = useContext(AppContext);
@@ -169,7 +169,7 @@ export default withLayout(Home);
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const firstCategory = 0;
   try {
-    const { data: menu }: AxiosResponse<MenuItem[]> = await axios.post<MenuItem[]>('https://courses-top.ru/api/top-page/find', {
+    const { data: menu }: AxiosResponse<MenuItem[]> = await axios.post<MenuItem[]>(API.topPage.find, {
       firstCategory
     });
     return {
@@ -179,12 +179,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
       }
     }
   } catch {
-    return {
-      props: {
-        menu: [],
-        firstCategory
-      }
-    }
+    return { notFound: true };
   }
 
 
