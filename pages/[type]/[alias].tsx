@@ -49,7 +49,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	}
 	return {
 		paths,
-		fallback: 'blocking'
+		fallback: true
 	};
 };
 
@@ -90,8 +90,7 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async ({ params }: G
 			firstCategory: TopLevelCategory.Courses,
 			page,
 			products
-		},
-		revalidate: 60
+		}
 	}
 };
 
