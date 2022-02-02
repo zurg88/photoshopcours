@@ -12,7 +12,7 @@ import CategoryBg from '../helpers/img/categoryBg.jpg';
 import { AppContext } from '../context/app.context';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { API } from './api/api';
+import { API } from '../helpers/api';
 
 function Home(): JSX.Element {
   const { menu, setMenu, firstCategory } = useContext(AppContext);

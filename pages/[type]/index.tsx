@@ -5,7 +5,7 @@ import { MenuItem } from '../../interfaces/menu.interface';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import { firstLevelMenu } from '../../helpers/helpers';
 import { ParsedUrlQuery } from 'querystring';
-import { API } from '../api/api';
+import { API } from '../../helpers/api';
 
 function Type({ firstCategory }: TypeProps): JSX.Element {
 	return (
@@ -20,7 +20,7 @@ export default withLayout(Type);
 export const getStaticPaths: GetStaticPaths = async () => {
 	return {
 		paths: firstLevelMenu.map(m => '/' + m.route),
-		fallback: true
+		fallback: false
 	};
 };
 
