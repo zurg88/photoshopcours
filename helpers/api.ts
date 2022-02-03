@@ -1,12 +1,12 @@
 export const API = {
 	topPage: {
-		find: process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find',
-		byAlias: process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/byAlias/'
+		find: '//courses-top.ru' + '/api/top-page/find',
+		byAlias: '//courses-top.ru' + '/api/top-page/byAlias/'
 	},
 	product: {
-		find: process.env.NEXT_PUBLIC_DOMAIN + '/api/product/find'
+		find: '//courses-top.ru' + '/api/product/find'
 	},
 	review: {
-		createDemo: process.env.NEXT_PUBLIC_DOMAIN + '/api/review/create-demo'
+		createDemo: '//courses-top.ru' + '/api/review/create-demo'
 	}
 }
