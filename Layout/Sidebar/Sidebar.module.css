@@ -2,13 +2,14 @@
 	display: grid;
 	align-content: start;
 	gap: 20px;
+	padding: 0 10px;
 }
 
 .logo {
 	margin-top: 34px;
 }
 
-@media (max-width: 765px) {
+@media (max-width: 768px) {
 	.sidebar {
 		display: none;
 	}

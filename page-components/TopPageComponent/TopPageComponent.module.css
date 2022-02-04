@@ -22,16 +22,12 @@
 }
 
 .skillsList {
-	display: grid;
-	grid-template-columns: repeat(6, auto);
-
-	justify-content: start;
-
 	padding: 0;
 }
 
 .skillsItem {
 	margin-right: 10px;
+	display: inline-block;
 }
 
 .seo h1 {
@@ -61,26 +57,22 @@
 }
 
 @media screen and (max-width: 755px) {
-	.skillsList {
-		grid-template-columns: repeat(3, auto);
-		gap: 10px 0;
-	}
-
 	.wrapper {
 		margin-top: 10px;
 	}
 }
 
-@media screen and (max-width: 510px) {
-	.skillsList {
-		grid-template-columns: repeat(2, auto);
-	}
-}
+@media screen and (max-width: 420px) {
 
-@media screen and (max-width: 370px) {
-	.skillsList {
-		grid-template-columns: auto;
-		gap: 10px;
+	.seo,
+	.hhTitle,
+	.productList {
+		margin: 10px;
+	}
+
+	.skillsItem .AdditionalSmallElement,
+	.productList button {
+		font-size: 10px;
 	}
 }
 

@@ -56,3 +56,14 @@
 		gap: 20px 0;
 	}
 }
+
+@media screen and (max-width: 420px) {
+	.advantagesList {
+		margin: 10px;
+		gap: 0;
+	}
+
+	.advantagesList h3 {
+		font-size: 18px;
+	}
+}

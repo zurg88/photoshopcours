@@ -10,11 +10,11 @@
 	gap: 20px 0;
 }
 
-.salary > div {
+.salary>div {
 	border-right: 1px solid var(--gray-light);
 }
 
-.salary > div:last-child {
+.salary>div:last-child {
 	border-right: none;
 }
 
@@ -69,7 +69,7 @@
 }
 
 @media screen and (max-width: 640px) {
-	.salary > div {
+	.salary>div {
 		padding-bottom: 20px;
 
 		border-right: none;
@@ -80,9 +80,15 @@
 		grid-template-columns: 1fr;
 	}
 
-	.salary > div:last-child {
+	.salary>div:last-child {
 		padding-bottom: 0;
 
 		border-bottom: none;
+	}
+}
+
+@media screen and (max-width: 370px) {
+	.hh {
+		margin: 10px;
 	}
 }

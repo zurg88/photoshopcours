@@ -27,7 +27,7 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
 				<Sort sort={sort} setSort={setSort} />
 			</div>
 
-			<ul>
+			<ul className={styles.productList}>
 				{sortedProducts && sortedProducts.map(p => (
 					<li key={p._id}> <Product layout={shouldReduceMotion ? false : true} product={p} /> </li>
 				))}

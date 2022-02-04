@@ -46,7 +46,7 @@
 	height: auto;
 }
 
-@media (max-width: 765px) {
+@media (max-width: 768px) {
 	.wrapper {
 		grid-template-columns: minmax(320px, 1fr);
 		gap: 10px;
